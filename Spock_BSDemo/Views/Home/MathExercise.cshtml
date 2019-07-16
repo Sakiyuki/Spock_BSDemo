@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "MathExercise";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <div class="row">
+        <div class="col-md-12 text-center h3">
+            Simple Math Exercise
+        </div>
+    </div>
+    <div class="row" id="error">
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" id="mathnum1"  placeholder="Enter Number 1">
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" id="mathnum2"  placeholder="Enter Number 2">
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" id="mathnum3"  placeholder="Enter Number 3">
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" id="mathnum4" placeholder="Enter Number 4">
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="number" class="form-control" id="mathnum5" placeholder="Enter Number 5">
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <button class="btn btn-success" id="mathBtn">Calculate</button>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+       
+        $("#mathBtn").click(function () {
+            //From line 45 to 52, it will set the form value to an empty string when the modal is closed.
+            $('#mathModal').on('hidden.bs.modal', function (e) {
+                $("#mathnum1").val("");
+                $("#mathnum2").val("");
+                $("#mathnum3").val("");
+                $("#mathnum4").val("");
+                $("#mathnum5").val("");
+                $('.alert').alert('close');// This line will close the alerts.
+            });
+            //Step 1: Get the user data
+            var num1 = Number($("#mathnum1").val());
+            var num2 = Number($("#mathnum2").val());
+            var num3 = Number($("#mathnum3").val());
+            var num4 = Number($("#mathnum4").val());
+            var num5 = Number($("#mathnum5").val());
+
+            
+
+            if (num1 && num2 && num3 && num4 && num5) { //This if statement will check to insure that all fields have been
+                // inputed by the user.
+                //Step 2: ask the calculations with the given data
+                var smallest = Math.min(num1, num2, num3, num4, num5);
+                var largest = Math.max(num1, num2, num3, num4, num5);
+                var sum = num1 + num2 + num3 + num4 + num5;
+                var product = num1 * num2 * num3 * num4 * num5;
+                var average = sum / 5;
+                // Lines 71 - 75 will display te text below into the Modal.
+                $("#smallest").text("The smallest number is: " + smallest);
+                $("#largest").text("The largest number is: " + largest);
+                $("#sum").text("The sum is: " + sum);
+                $("#product").text("The product is: " + product);
+                $("#average").text("The average is: " + average);
+
+                //Step 3: Desplay the results
+                $('#mathModal').modal(); //This is supposed to open up the modal once called.
+        
+            } else {
+                // This is an error message if all form fields have not been filled.
+                $("#error").html('<div class="col-md-6"><div class="alert alert-danger" role="alert">Please fill all the fields<div><div>')
+            }
+        });
+    </script>
+
+
+    <!-- Modal -->
+    <div id="mathModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="result">
+                        <p id="smallest"></p>
+                        <p id="largest"></p>
+                        <p id="sum"></p>
+                        <p id="product"></p>
+                        <p id="average"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+

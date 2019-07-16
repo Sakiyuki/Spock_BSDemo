@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Factorial Demo";
+}
+
+<h2 class="text-center">Factorial Demo</h2>
+
+<div class="row">
+    <div class="col-md-12 text-center h2">
+        Welcome to the World of Factorial...
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="row">
+            @*<input id="fact" type="number" placeholder="Enter your number" />*@
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="fact" placeholder="Enter your number">
+            </div>
+        
+            <div class="col-md-8"><u>Result...</u> <p id="factOut"></p></div>
+            <div class="col-md-12 mt-3">
+                <button id="btnFact" class="btn btn-success">Calculate</button>
+                <button id="cancel" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+       
+    </div>
+    
+    </div>
+
+@section scripts{
+    
+    <script>
+        // Reset form field
+        $("#cancel").click(function () {
+            $("#fact").val("");
+            $("#factOut").text("");
+        })
+        //I need a click event handler for the button
+        $("#btnFact").click(function () {
+            // Step 1:  Get the user data
+            var number = +$("#fact").val();
+            //$("btnClear").click(function () {
+            //    $("#fact").val("");
+
+            // I am using an If Statement to evaluate somethng
+            if (number > 170) {
+                alert("Please enter positive numbers less than 171!");
+                $("#fact").val("");
+                return;
+            }
+            else {
+                //Step 2: Calculate the Factorial
+                for (var loop = number - 1; loop > 1; loop--) {
+                    //How do we calculate the factorial
+
+                    number *= loop;  //Equavelent to number = number * loop
+
+                }
+
+            }
+
+            //Step 3:  Show the result
+            $("#factOut").text(number);
+
+        });
+
+    </script>
+    
+    
+    }

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Palindrome Demo";
+}
+
+<h4>Palindrome</h4>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12 text-center h2">
+        Welcome to the World of Palindrome...
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <input id="palIn" type="text" placeholder="Enter your word:" />
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 text-center h4">
+                        <u>Results</u>
+                    </div>
+                </div>
+    </div>
+            <div class="row">
+                        <div class="col-md-4 mr-2">
+                            <button id="btnPal" class="btn btn-success">Submit</button>
+                        </div>
+                        <div class="col-md-4 mr-2">
+                            <button id="btnPal2" class="btn btn-danger">Result</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button id="btnClear" class="btn-btn-success">Clear</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 text-center h4">
+                    <p id="palOut"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+       
+@section scripts{
+    
+    <script>
+        //Step 1:  Get the word
+        $("#btnPal1").click(function(){
+            var word = $("#palIn").val();
+        //Step 2: Reverse the word
+        //Use a decrementing for loop in conjunction with the
+        //substr command and the += operator to produce the reverse word.
+            for (var index = word.length -1, revword = '';index >=0; index--) {
+                revword += word.substr(index, 1);
+            }
+
+            var message = ""
+            if (word == revword) {
+                message = word + "reversed = " + revword + "therefore" + word + "is a Palindrome";
+            }
+            else {
+                message = word + "reversed! = " + revword + "therefore" + word + "is not a Palindrome";
+            }
+
+        //Step 3: Inform the user
+            $("#palOut").text(message);
+
+        });
+        $("#btnPal2").click(function () {
+            var word = $("#palIn").val();
+            var array = word.split(',');
+            var revArray = array.reverse();
+            var revword = revArray.join('');
+            var message = "";
+            if (word == revword) {
+                message = word + "reversed = " + revword + "therefore" + word + "is a Palindrome";
+            }
+            else {
+                message = word + "reversed!=" + revword + "therefore" + word + "is not a Palindrome";
+            }
+    </script>
+    }

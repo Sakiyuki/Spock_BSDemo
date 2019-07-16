@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "JavaScriptExercise";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-md-6 h3 text-center">
+        Enter 5 Numbers to perform some Basic Math:
+    </div>
+    <div class="col-md-6 h3 text-center">
+        Here are your Results:
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Enter your First number:</div>
+    <div class="col-md-3">
+        <input type="number" id="mathnum1" />
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-3">Enter your Second number:</div>
+    <div class="col-md-3">
+        <input type="number" id="mathnum2" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Enter your Third number:</div>
+    <div class="col-md-3">
+        <input type="number" id="mathnum3" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Enter your Fourth number:</div>
+    <div class="col-md-3">
+        <input type="number" id="mathnum4" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Enter your Fith number:</div>
+    <div class="col-md-3">
+        <input type="number" id="mathnum5" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <button id="mathBtn" class="btn btn-primary">Click Me</button>
+    </div>
+</div>
+<div class="row">
+    <p id="out1"></p>
+</div>
+
+@section scripts{
+    <script>
+        $("#mathBtn").click(function () {
+            //Step 1: Get the user data
+            var num1 = Number($("#mathnum1").val());
+            var num2 = Number($("#mathnum2").val());
+            var num3 = Number($("#mathnum3").val());
+            var num4 = Number($("#mathnum4").val());
+            var num5 = Number($("#mathnum5").val());
+
+            //Step 2: ake the calculations with the given data
+            var smallest = Math.min(num1, num2, num3, num4, num5);
+            var largest = Math.max(num1, num2, num3, num4, num5);
+            var sum = num1 + num2 + num3 + num4 + num5;
+            var product = num1 * num2 * num3 * num4 * num5;
+            var average = sum / 5;
+
+            //Step 3: Desplay the results
+            $("#out1").text("The smallest number is: " + smallest)
+
+        });
+    </script>
+
+
+    <!-- Modal -->
+    <div id="mathModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "FizzBuzz";
+}
+
+
+<h2>FizzBuzz</h2>
+<div class="row">
+    <div class="col-md-12 text-center h3">
+        The Infamous Fizz Buzz Challenge
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+
+            <input type="number" class="form-control" id="fbIn1" placeholder="Enter number 1" />
+        </div>
+        <div class="row mt-2">
+
+            <input type="number" class="form-control" id="fbIn2" placeholder="Enter number 2" />
+        </div>
+        <div class="row mt-2">
+            <button id="btnFB" class="btn btn-primary">Go</button>
+        </div>
+        <div class="col-md-12 mt-2 bg-light">
+            <p class="text-break" id="fbOut"></p>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+
+@section scripts{
+    <script>
+        $("#btnFB").click(function () {
+            var num1 = +$('#fbIn1').val(); //The plus sign cast a string into a number.
+            var num2 = +$('#fbIn2').val();
+            var output = [];
+
+            for (var counter = 1; counter <= 100; counter++) {
+                    if (counter % num1 == 0 && counter % num2 == 0) {
+                        output.push("fizzBuzz");
+                    } else if (counter % num1 == 0) {
+                        output.push("fizz");
+                    } else if (counter % num2 == 0) {
+                        output.push("buzz");
+                    }
+                    else {
+                        output.push(counter);
+                    }
+                }
+                // for (var counter = 1, output = []; counter <= 100; counter++){
+                //Need to figure out how to make calculations to determine Fizz, Buzz, FizzBuzz
+
+                // Build a string...
+                // output.push("Buzz")
+                //}
+                $("#fbOut").text(output.join(", "));
+            })
+        //    input1 = 5
+        //    input2 = 7
+        //    1, 2, 3, 4, 5, 6........, 99, 100
+
+        //    1 = 1 / 5 = n, 1 / 7 = n, display = 1;
+        //2 = 2 / 5 = n, 2 / 7 = n, display = 2
+        //5 = 5 / 5 = y, 5 / 7 = y, display = fizz
+        //6 = 6 / 5 = n, 6 / 7 = n, d = 6
+        //7 = 7 / 5 = n, 7 / 7 = y, d = buzz
+        //21 = 21 / 5 = n, 21 / 7= y display = buzz 
+        //35 = 35 / 5 = y, 35 /7 = y display fizzbuzz
+
+        //for (i = 0; i <= 100; i++) {
+        //    if (i % 3 == 0 && i % 5 == 0) {
+        //        console.log('fizzbuzz' + i);
+        //    }
+        //    else if (i % 3 == 0) {
+        //        console.log('fiz' + i);
+        //    }
+        //    else if (i % 5 == 0) {
+        //        console.log('buzz' + i);
+        //    }
+        //}
+
+    </script>
+    
+    }
+
